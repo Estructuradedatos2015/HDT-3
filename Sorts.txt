@@ -1,0 +1,4 @@
+Estos son los algoritmos de Sort que le toca a cada quien:
+Diego Rosales: Selection Sort e Insertion Sort
+Luisa Arboleda: Merge Sorting
+Sebastián Portocarrero: Quick SrotMario Gálves: Radix Sort
