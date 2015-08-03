@@ -7,7 +7,8 @@ package hoja3;
 import java.util.ArrayList;
 /**
  *
- * @author diego_000
+ * Autores:
+ * Diego Rosales
  */
 public class Sort {
     
@@ -27,5 +28,20 @@ public class Sort {
             unsorted.remove(index);
         }
         return sorted;
+    }
+    
+    public static ArrayList<Comparable> InsertionSort(ArrayList<Comparable> unsorted){
+        for(int i=1;i<unsorted.size(); i++){
+            if(unsorted.get(i).compareTo(unsorted.get(-1))<0){
+                int k=1;
+                while(k<=i){
+                    if (unsorted.get(i).compareTo(unsorted.get(i-k))<0)
+                        k++;
+                }
+                Comparable val=unsorted.remove(i);
+                unsorted.add(i-k, val);
+            }
+        }
+        return unsorted;
     }
 }
