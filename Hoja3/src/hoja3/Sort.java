@@ -44,4 +44,42 @@ public class Sort {
         }
         return unsorted;
     }
+    public static ArrayList<Comparable> QuikSort(ArrayList<Comparable> unsorted){
+        quickSortRecursive(unsorted,0,unsorted.size()-1);
+        return unsorted;
+    }
+    public static void swap(ArrayList<Comparable> unsorted,int i,int j)
+    {
+        ArrayList<Comparable> temp = null;
+        temp.add(0,unsorted.get(i));
+        unsorted.add(i,unsorted.get(j));
+        unsorted.add(j,temp.get(0));
+    
+    }
+     public static int partition(ArrayList<Comparable> unsorted, int left, int right)
+    {
+       
+       while(true)
+       {
+           
+           while (left < right && (unsorted.get(right).compareTo(unsorted.get(left))<0)) right--;
+           if (left < right) swap(unsorted,left++,right);
+           else return left;
+           
+           while (left < right && (unsorted.get(right).compareTo(unsorted.get(left))<0)) left++;
+           if (left < right) swap(unsorted,left,right--);
+           else return right;
+           
+       }
+       
+    }
+   public static void quickSortRecursive(ArrayList<Comparable> unsorted,int left,int right)
+    {
+        int pivot; 
+        if (left >= right) return;
+        pivot = partition(unsorted,left,right);
+        quickSortRecursive(unsorted,left,pivot-1); 
+        quickSortRecursive(unsorted,pivot+1,right);
+        
+    }   
 }
