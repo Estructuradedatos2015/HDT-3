@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hoja3;
+//package hoja3;
 import java.util.ArrayList;
 /**
  *
@@ -44,11 +44,13 @@ public class Sort {
         }
         return unsorted;
     }
+    
+    
     public static ArrayList<Comparable> QuikSort(ArrayList<Comparable> unsorted){
         quickSortRecursive(unsorted,0,unsorted.size()-1);
         return unsorted;
     }
-    public static void swap(ArrayList<Comparable> unsorted,int i,int j)
+    private static void swap(ArrayList<Comparable> unsorted,int i,int j)
     {
         ArrayList<Comparable> temp = null;
         temp.add(0,unsorted.get(i));
@@ -56,7 +58,7 @@ public class Sort {
         unsorted.add(j,temp.get(0));
     
     }
-     public static int partition(ArrayList<Comparable> unsorted, int left, int right)
+    private static int partition(ArrayList<Comparable> unsorted, int left, int right)
     {
        
        while(true)
@@ -73,7 +75,7 @@ public class Sort {
        }
        
     }
-   public static void quickSortRecursive(ArrayList<Comparable> unsorted,int left,int right)
+    private static void quickSortRecursive(ArrayList<Comparable> unsorted,int left,int right)
     {
         int pivot; 
         if (left >= right) return;
