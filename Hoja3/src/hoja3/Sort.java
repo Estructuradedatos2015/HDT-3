@@ -81,5 +81,73 @@ public class Sort {
         quickSortRecursive(unsorted,left,pivot-1); 
         quickSortRecursive(unsorted,pivot+1,right);
         
-    }   
+    } 
+   
+   private void mergesort(int baja, int alta) 
+  {
+	  //verificamos que el arreglo sea mayor que 1 porque un arreglo de una sola posicion "ya esta ordenado" 
+    if (baja < alta) 
+	{
+		//Encontramos nuestro valor central
+      int centro = (alta - baja) / 2;
+	  //Aqui hay que manejar de manera recursiva los elementos del arreglo, no es hasta que 
+	  //los valores sean mayor de 1 que se empiezan a ordenar. Es decir hasta entonces llamamos a la función merge
+      mergesort(baja, centro);
+      mergesort(centro, alta);
+      merge(baja, centro, alta);
+    }
+  }
+	//la funcion merge lo que hace es ir colocando de manera ordenada los valores de regreso al arreglo "temporal" que se tiene
+	//este arreglo es una sub particion creada para ordenar elementos a una menor escala
+  private void merge(int baja, int centro, int alta,ArrayList<Comparable> unsorted) 
+  {
+   
+    for (int posIzquierda = baja; posIzquierda <= alta; posIzquierda++) 
+    {
+        ArrayList<Comparable> sorted = new ArrayList<>();
+    }
+	//Creamos un arreglos temporal para poder ordenarlo primero en este arreglo y luego mandarlo ya ordenado al arreglo original.
+    int posIzquierda = baja; //el ladro izquierda del sub arreglo 
+    int posDerecha = centro; // el lado derecho del sub arreglo 
+    int posOriginal = baja; //la posicion real del arreglo  original para poder ir almacenando ahí los valores 
+
+    while (posIzquierda <= centro && posDerecha <= alta) 
+    {
+        if(unsorted.get(posDerecha).compareTo(unsorted.get(posIzquierda))<0)
+        {
+        sorted.get(baja) = unsorted.get(posIzquierda);
+        posIzquierda++;
+	} 
+	 else
+	{
+        sorted.get(baja) = unsorted.get(posDerecha);
+        posDerecha++;
+	}
+        baja++;
+    }
+	
+    while (posIzquierda <= centro)
+    {
+      sorted.get(baja) = unsorted.get(posIzquierda);
+      baja++;
+      posIzquierda++;
+    }
+    while (posDerecha <= centro)
+    {
+      sorted.get(baja) = unsorted.get(posDerecha);
+      baja++;
+      posDerecha++;
+    }
+
+  }
+  
+  public int[] getMergeSort()
+  {
+	  return sorted;
+  }
+   
+   public static ArrayList<Comparable> MergeSorting(ArrayList<Comparable> unsorted)
+   {
+       
+   }
 }
