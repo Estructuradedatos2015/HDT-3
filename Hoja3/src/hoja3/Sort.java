@@ -60,7 +60,7 @@ public class Sort {
     }
     private static void swap(ArrayList<Comparable> unsorted,int i,int j)
     {
-        ArrayList<Comparable> temp = null;
+        ArrayList<Comparable> temp = new ArrayList<>(0);;
         temp.add(0,unsorted.get(i));
         unsorted.add(i,unsorted.get(j));
         unsorted.add(j,temp.get(0));
