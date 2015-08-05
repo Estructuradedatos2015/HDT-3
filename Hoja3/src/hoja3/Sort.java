@@ -14,11 +14,12 @@ public class Sort {
     
     public static ArrayList<Comparable> SelectionSort(ArrayList<Comparable> unsorted){
         ArrayList<Comparable> sorted = new ArrayList<>();
-        for(int i=0; i<unsorted.size(); i++){
+        int size=unsorted.size();
+        for(int i=0; i<size; i++){
             Comparable menor=unsorted.get(0);
             int index=0;
             //este ciclo encuentra el menor que contiene unsorted
-            for(int j=1;i<unsorted.size(); j++){
+            for(int j=1;j<unsorted.size(); j++){
                 if(menor.compareTo(unsorted.get(j))<0){
                     menor=unsorted.get(j);
                     index=j;
@@ -32,14 +33,21 @@ public class Sort {
     
     public static ArrayList<Comparable> InsertionSort(ArrayList<Comparable> unsorted){
         for(int i=1;i<unsorted.size(); i++){
-            if(unsorted.get(i).compareTo(unsorted.get(-1))<0){
-                int k=1;
-                while(k<=i){
-                    if (unsorted.get(i).compareTo(unsorted.get(i-k))<0)
-                        k++;
-                }
+            if(unsorted.get(i).compareTo(unsorted.get(i-1))<0){
+                int k=0;
+                boolean flag;
+                do{
+                    k++;
+                    flag=unsorted.get(i).compareTo(unsorted.get(i-k))<0;
+                }while(k<i && unsorted.get(i).compareTo(unsorted.get(i-k))<0);
+                
                 Comparable val=unsorted.remove(i);
-                unsorted.add(i-k, val);
+                if(flag){
+                    unsorted.add(i-k, val);
+                }
+                else{
+                    unsorted.add(i-k+1, val);
+                }
             }
         }
         return unsorted;
