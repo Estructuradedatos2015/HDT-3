@@ -96,4 +96,106 @@ public class Sort {
         quickSortRecursive(unsorted,pivot+1,right);
         
     }   
+        public ArrayList<Comparable> MergeSort(ArrayList<Comparable> unsorted)
+    {
+        ArrayList<Comparable> left = new ArrayList<Comparable>();
+        ArrayList<Comparable> right = new ArrayList<Comparable>();
+        int center;
+ 
+        if(unsorted.size()==1)
+        {    
+            return unsorted;
+        }
+        else
+        {
+            center = unsorted.size()/2;
+            // copy the left half of whole into the left.
+            for(int i=0; i<center; i++)
+            {
+                left.add(unsorted.get(i));
+            }
+ 
+            //copy the right half of whole into the new arraylist.
+            for(int i=center; i<unsorted.size(); i++)
+            {
+                right.add(unsoted.get(i));
+            }
+ 
+            // Sort the left and right halves of the arraylist.
+            left  = MergeSort(left);
+            right = MergeSort(right);
+ 
+ 
+            // Merge the results back together.
+            merge(left,right,unsorted);
+ 
+        }
+        return unsorted;
+    }
+ 
+    private void merge(ArrayList<Comparable> left, ArrayList<Comparable> right, 
+            ArrayList<Compararable> unsorted) {
+ 
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int unsortedIndex = 0;
+ 
+ 
+        // As long as neither the left nor the right arraylist has
+        // been used up, keep taking the smaller of left.get(leftIndex)
+        // or right.get(rightIndex) and adding it at both.get(bothIndex).
+        while (leftIndex < left.size() && rightIndex < right.size())
+        {
+            if ((left.get(leftIndex).compareTo(right.get(rightIndex)))<0) 
+            {
+                unsorted.set(unsortedIndex,left.get(leftIndex));
+                leftIndex++;
+            }
+            else
+            {
+                unsorted.set(unsortedIndex, right.get(rightIndex));
+                rightIndex++;
+            }
+            unsortedIndex++;
+        }
+ 
+        ArrayList<Comarable>vari;
+        int variIndex;
+        if (leftIndex >= left.size()) {
+            // The left arraylist has been use up...
+            vari = right;
+            variIndex = rightIndex;
+        }
+        else {
+            // The right arraylist has been used up...
+            vari = left;
+            variIndex = leftIndex;
+        }
+ 
+        // Copy the rest of whichever arraylist (left or right) was
+        // not used up.
+        for (int i=variIndex; i<vari.size(); i++) {
+            unsorted.set(unsortedIndex, vari.get(i));
+            unsortedIndex++;
+        }
+    }
+ 
+    public void show()
+    {
+        System.out.println("Sorted:");
+        for(int i=0; i<sorted.size();i++)
+        {
+            System.out.println(sorted.get(i));
+        }
+ 
+    }
+     public void sort()
+    {
+        ArrayList<Comparable> sorted = new ArrayList<Comparable>();
+        sorted = MergeSort(sorted);
+        for(int i=0; i<unsorted.size(); i++)
+        {
+            StringList.add(unsorted.get(i));
+        }
+    }
 }
