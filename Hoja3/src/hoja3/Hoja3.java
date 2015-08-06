@@ -48,6 +48,8 @@ public class Hoja3{
             System.out.println("");
             sorter=Sort.QuikSort(sorter);
             System.out.println(sorter);
+            Sort test = new Sort(sorter);
+            test.show();
             datos.close();
         }
         catch(IOException e){
