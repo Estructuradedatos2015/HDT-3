@@ -60,7 +60,7 @@ public class Sort {
     }
     private static void swap(ArrayList<Comparable> unsorted,int i,int j)
     {
-       rrayList<Comparable> temp = new ArrayList<>(0);
+       ArrayList<Comparable> temp = new ArrayList<>(0);
         ArrayList<Comparable> temp2 = new ArrayList<>(0);
         temp.add(0,unsorted.get(i));
         temp2.add(0,unsorted.get(j));
@@ -118,7 +118,7 @@ public class Sort {
             //copy the right half of whole into the new arraylist.
             for(int i=center; i<unsorted.size(); i++)
             {
-                right.add(unsoted.get(i));
+                right.add(unsorted.get(i));
             }
  
             // Sort the left and right halves of the arraylist.
@@ -134,7 +134,7 @@ public class Sort {
     }
  
     private void merge(ArrayList<Comparable> left, ArrayList<Comparable> right, 
-            ArrayList<Compararable> unsorted) {
+            ArrayList<Comparable> unsorted) {
  
         int leftIndex = 0;
         int rightIndex = 0;
@@ -159,7 +159,7 @@ public class Sort {
             unsortedIndex++;
         }
  
-        ArrayList<Comarable>vari;
+        ArrayList<Comparable>vari;
         int variIndex;
         if (leftIndex >= left.size()) {
             // The left arraylist has been use up...
@@ -182,6 +182,8 @@ public class Sort {
  
     public void show()
     {
+        ArrayList<Comparable> sorted = new ArrayList<Comparable>();
+        sorted = MergeSort(sorted);
         System.out.println("Sorted:");
         for(int i=0; i<sorted.size();i++)
         {
@@ -189,13 +191,11 @@ public class Sort {
         }
  
     }
-     public void sort()
+     public Sort(ArrayList<Comparable> sorted)
     {
-        ArrayList<Comparable> sorted = new ArrayList<Comparable>();
-        sorted = MergeSort(sorted);
-        for(int i=0; i<unsorted.size(); i++)
+        for(int i=0; i<sorted.size(); i++)
         {
-            StringList.add(unsorted.get(i));
+            sorted.add(sorted.get(i));
         }
     }
 }
